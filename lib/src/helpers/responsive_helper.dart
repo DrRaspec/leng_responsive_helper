@@ -188,18 +188,18 @@ class ResponsiveHelper {
 
   /// Check if current device belongs to mobile category
   static bool get isMobile => [
-    DeviceSize.smallMobile,
-    DeviceSize.mobile,
-    DeviceSize.largeMobile,
-  ].contains(_deviceSize);
+        DeviceSize.smallMobile,
+        DeviceSize.mobile,
+        DeviceSize.largeMobile,
+      ].contains(_deviceSize);
 
   /// Check if current device belongs to tablet category
   static bool get isTablet => [
-    DeviceSize.smallTablet,
-    DeviceSize.tablet,
-    DeviceSize.largeTablet,
-    DeviceSize.custom600x800, // You might want to include this as tablet
-  ].contains(_deviceSize);
+        DeviceSize.smallTablet,
+        DeviceSize.tablet,
+        DeviceSize.largeTablet,
+        DeviceSize.custom600x800, // You might want to include this as tablet
+      ].contains(_deviceSize);
 
   /// Check if current device is the custom 600x800 size
   static bool get is600x800 => _deviceSize == DeviceSize.custom600x800;

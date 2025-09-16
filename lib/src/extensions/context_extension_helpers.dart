@@ -430,25 +430,23 @@ extension ContextExtension on BuildContext {
   }) {
     return showDialog<bool>(
       context: this,
-      builder:
-          (context) => AlertDialog(
-            title: Text(title),
-            content: Text(message),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context, false),
-                child: Text(cancelText),
-              ),
-              TextButton(
-                onPressed: () => Navigator.pop(context, true),
-                style:
-                    confirmColor != null
-                        ? TextButton.styleFrom(foregroundColor: confirmColor)
-                        : null,
-                child: Text(confirmText),
-              ),
-            ],
+      builder: (context) => AlertDialog(
+        title: Text(title),
+        content: Text(message),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(cancelText),
           ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: confirmColor != null
+                ? TextButton.styleFrom(foregroundColor: confirmColor)
+                : null,
+            child: Text(confirmText),
+          ),
+        ],
+      ),
     );
   }
 
