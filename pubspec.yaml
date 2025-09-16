@@ -1,6 +1,6 @@
 name: leng_responsive_helper
 description: A comprehensive Flutter package providing responsive design utilities with extensions, helpers, and widgets for building adaptive UIs across all device sizes.
-version: 1.0.4
+version: 1.0.5
 homepage: https://github.com/DrRaspec/leng_responsive_helper
 repository: https://github.com/DrRaspec/leng_responsive_helper
 

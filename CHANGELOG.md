@@ -2,11 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## 1.0.5 - 2025-09-16
 
-- Fix: Examples updated and `const` usage applied where recommended by analyzer.
-- Fix: Prevent using `BuildContext` across async gaps in demo (`lib/src/main.dart`).
-- Docs: README.md cleaned and clarified; note about `withValues(alpha: ...)` color API.
+- Added: Top-level `example/` app demonstrating core package usage (included in published package).
+- Fix: Finalized example screens and replaced deprecated `withOpacity` usages with `withValues(alpha: ...)`.
+- Chore: Minor formatting and helper fixes.
+
+## Unreleased
 
 ## 1.0.4
 
