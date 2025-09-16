@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:responsive_helper/responsive_helper.dart';
-import 'package:responsive_helper/src/extensions/context_extension_helpers.dart';
+import 'package:leng_responsive_helper/responsive_helper.dart';
+import 'package:leng_responsive_helper/src/extensions/context_extension_helpers.dart';
 
 void main() {
   group('ResponsiveHelper', () {
@@ -204,7 +204,8 @@ void main() {
           home: Builder(
             builder: (context) {
               expect(context.mediaQuery, isA<MediaQueryData>());
-              expect(context.size, isA<Size>());
+              // Avoid calling context.size directly during build (can throw in tests)
+              expect(MediaQuery.of(context).size, isA<Size>());
               expect(context.isPortrait, isA<bool>());
               expect(context.isLandscape, isA<bool>());
               expect(context.statusBarHeight, greaterThanOrEqualTo(0));
@@ -239,11 +240,28 @@ void main() {
       const tabletWidget = Text('Tablet Layout');
 
       await tester.pumpWidget(
-        const MaterialApp(
-          home: ResponsiveBuilder(
-            mobile: mobileWidget,
-            tablet: tabletWidget,
-          ),
+        MaterialApp(
+          home: Builder(builder: (context) {
+            // Provide a MediaQuery with mobile size and scaffold so ResponsiveBuilder
+            // has a proper layout and Directionality in tests.
+            return MediaQuery(
+              data: const MediaQueryData(size: Size(375, 812)),
+              child: Builder(builder: (inner) {
+                ResponsiveHelper.init(inner);
+                return Scaffold(
+                  body: Center(
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints.tight(const Size(375, 812)),
+                      child: const ResponsiveBuilder(
+                        mobile: mobileWidget,
+                        tablet: tabletWidget,
+                      ),
+                    ),
+                  ),
+                );
+              }),
+            );
+          }),
         ),
       );
 
@@ -255,11 +273,26 @@ void main() {
       const mobileWidget = Text('Mobile Layout');
 
       await tester.pumpWidget(
-        const MaterialApp(
-          home: ResponsiveBuilder(
-            mobile: mobileWidget,
-            // No tablet/desktop specified - should fall back to mobile
-          ),
+        MaterialApp(
+          home: Builder(builder: (context) {
+            return MediaQuery(
+              data: const MediaQueryData(size: Size(375, 812)),
+              child: Builder(builder: (inner) {
+                ResponsiveHelper.init(inner);
+                return Scaffold(
+                  body: Center(
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints.tight(const Size(375, 812)),
+                      child: const ResponsiveBuilder(
+                        mobile: mobileWidget,
+                        // No tablet/desktop specified - should fall back to mobile
+                      ),
+                    ),
+                  ),
+                );
+              }),
+            );
+          }),
         ),
       );
 

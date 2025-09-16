@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_helper/responsive_helper.dart';
+import 'package:leng_responsive_helper/responsive_helper.dart';
 
 /// SizeExtension - Responsive sizing and spacing utilities for numbers
 ///

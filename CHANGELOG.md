@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file.
 - Fix: Prevent using `BuildContext` across async gaps in demo (`lib/src/main.dart`).
 - Docs: README.md cleaned and clarified; note about `withValues(alpha: ...)` color API.
 
+## 1.0.4
+
+- Fix: Applied analyzer `const` suggestions to examples.
+- Fix: Guarded async dialog handling in demo to avoid using `BuildContext` across async gaps.
+- Docs: README and changelog updates.
+
 ## 1.0.3
 
 - Fixed LICENSE file.

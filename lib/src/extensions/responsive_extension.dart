@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_helper/responsive_helper.dart';
+import 'package:leng_responsive_helper/responsive_helper.dart';
 
 /// ResponsiveExtension - Convenient extension methods for responsive design
 ///
@@ -243,15 +243,15 @@ extension ResponsiveExtension on BuildContext {
   /// - Large Tablet: 28px (professional)
   /// - Desktop: 32px (desktop-appropriate)
   double get dynamicPadding => responsive<double>(
-    smallMobile: 12.0,
-    mobile: 16.0,
-    largeMobile: 18.0,
-    smallTablet: 20.0,
-    tablet: 24.0,
-    largeTablet: 28.0,
-    desktop: 32.0,
-    fallback: 16.0,
-  );
+        smallMobile: 12.0,
+        mobile: 16.0,
+        largeMobile: 18.0,
+        smallTablet: 20.0,
+        tablet: 24.0,
+        largeTablet: 28.0,
+        desktop: 32.0,
+        fallback: 16.0,
+      );
 
   /// Smart dynamic text scaling based on device size
   ///
@@ -286,13 +286,13 @@ extension ResponsiveExtension on BuildContext {
   /// - Large Tablet: 1.2× (professional)
   /// - Desktop: 1.25× (desktop-appropriate)
   double get dynamicTextScale => responsive<double>(
-    smallMobile: 0.9,
-    mobile: 1.0,
-    largeMobile: 1.05,
-    smallTablet: 1.1,
-    tablet: 1.15,
-    largeTablet: 1.2,
-    desktop: 1.25,
-    fallback: 1.0,
-  );
+        smallMobile: 0.9,
+        mobile: 1.0,
+        largeMobile: 1.05,
+        smallTablet: 1.1,
+        tablet: 1.15,
+        largeTablet: 1.2,
+        desktop: 1.25,
+        fallback: 1.0,
+      );
 }

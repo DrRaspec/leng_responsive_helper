@@ -1,19 +1,61 @@
-# Responsive Extensions
+# Leng Responsive Helper
 
-A comprehensive Flutter package providing responsive design utilities with extensions, helpers, and widgets for building adaptive UIs across all device sizes.
+A concise Flutter package for building responsive user interfaces that adapt across device sizes.
 
-## Features
+## Quick Start
 
-🎯 **Smart Device Detection**: 8 distinct device categories for precise control  
-📱 **Responsive Extensions**: Transform any number into responsive dimensions  
-🎨 **Context Extensions**: Easy access to theme, navigation, and device info  
-🏗️ **Responsive Widgets**: Automatic layout switching based on screen size  
-🔧 **Type-Safe Values**: Intelligent fallback system for missing breakpoints  
+```dart
+import 'package:leng_responsive_helper/responsive_helper.dart';
 
-## Installation
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    ResponsiveHelper.init(context);
 
-Add this to your package's `pubspec.yaml` file:
+    return Scaffold(
+      body: Center(
+        child: Container(
+          width: 300.w,
+          height: 200.h,
+          padding: 16.padding,
+          child: Text('Hello World', style: TextStyle(fontSize: 18.sp)),
+        ),
+      ),
+    );
+  }
+}
+```
 
-```yaml
-dependencies:
-  responsive_extensions: ^1.0.0
+## Examples
+
+See `lib/src/example/` for multiple example screens: getting started, responsive builder, advanced examples, navigation, and a responsive form.
+
+## Note about color / opacity
+
+Avoid `Color.withOpacity(double)` in favor of the safer alpha setter used by this package:
+
+- Deprecated: `color.withOpacity(0.2)`
+- Recommended: `color.withValues(alpha: 0.2)`
+
+## Running examples and tests
+
+From the package root (PowerShell):
+
+```powershell
+flutter pub get
+flutter test
+flutter run
+```
+
+## Common usage patterns
+
+```dart
+// Initialize once per screen
+ResponsiveHelper.init(context);
+
+// Responsive dimension
+final w = 200.w;
+
+// Responsive font
+Text('Hi', style: TextStyle(fontSize: 16.sp));
+```
