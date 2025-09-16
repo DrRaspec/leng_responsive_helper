@@ -1,0 +1,15 @@
+name: leng_responsive_helper_example
+description: Example app for leng_responsive_helper
+publish_to: "none" # do not publish this example as a package
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  leng_responsive_helper:
+    path: ../
+
+flutter:
+  uses-material-design: true
